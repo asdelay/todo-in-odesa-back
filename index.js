@@ -6,7 +6,7 @@ const app = express();
 
 //data to connect
 const corsOption = {
-  origin: 'http://localhost:3000',
+  origin: 'https://todo-in-odesa-front.onrender.com',
   optionsSuccessStatus: 200,
 };
 // creating mongoose Schema
