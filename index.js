@@ -7,6 +7,7 @@ const app = express();
 //data to connect
 const corsOption = {
   origin: 'https://todo-in-odesa-front.onrender.com',
+  // origin: 'http://localhost:3000',
   optionsSuccessStatus: 200,
 };
 // creating mongoose Schema
@@ -28,7 +29,8 @@ app.get('/', async (req, res) => {
 app.post('/', async (req, res) => {
   const newTodo = new todoModel({ title: req.body.title, content: req.body.content });
   await newTodo.save();
-  res.send(JSON.stringify(newTodo));
+  const updatedTodos = await todoModel.find();
+  res.send(JSON.stringify(updatedTodos));
 });
 app.delete('/:id', async (req, res) => {
   await todoModel.findByIdAndDelete(req.params.id);
